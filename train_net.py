@@ -436,14 +436,12 @@ if __name__ == "__main__":
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
     from detectron2.data.datasets import register_coco_instances
-    register_coco_instances('custom_train_class', {}, "../sorted/challenge/train_merged_disease_coco3class_onlyd_fixed.json", "../sorted/challenge/for_coco_disease_train")
-    #register_coco_instances('custom_train_class', {}, "datasets/custom_quadrant_enumeration_triple/train.json", "../sorted/tooth_number_w_images")
-    #register_coco_instances('custom_train_class2', {}, "datasets/custom_quadrant/train.json", "../sorted/quadrant_w_xrays")
-    #register_coco_instances('custom_train_class3', {}, "datasets/custom_quadrant/train.json", "../sorted/quadrant_w_xrays")
-    #register_coco_instances('custom_validation_class1', {}, "datasets/custom_quadrant/validation.json", "../sorted/quadrant_w_xrays")
-    #register_coco_instances('custom_validation_class2', {}, "datasets/custom_quadrant/validation.json", "../sorted/quadrant_w_xrays")
-    #register_coco_instances('custom_validation_class', {}, "datasets/custom_quadrant_enumeration_triple/validation.json", "../sorted/tooth_number_w_images")
-    register_coco_instances('custom_validation_class', {}, "../sorted/challenge/test_merged_disease_coco3class.json", "../sorted/challenge/for_coco_disease_test")
+    register_coco_instances('custom_train_class1', {}, "dentex_dataset/coco/quadrant/annotations/instances_train2017.json", "dentex_dataset/coco/quadrant/train2017")
+    register_coco_instances('custom_train_class2', {}, "dentex_dataset/coco/enumeration/annotations/instances_train2017.json", "dentex_dataset/coco/enumeration/train2017")
+    register_coco_instances('custom_train_class3', {}, "dentex_dataset/coco/disease/annotations/instances_train2017.json", "dentex_dataset/coco/disease/train2017")
+    register_coco_instances('custom_validation_class1', {}, "dentex_dataset/coco/quadrant/annotations/instances_val2017.json", "dentex_dataset/coco/quadrant/val2017")
+    register_coco_instances('custom_validation_class2', {}, "dentex_dataset/coco/enumeration/annotations/instances_val2017.json", "dentex_dataset/coco/enumeration/val2017")
+    register_coco_instances('custom_validation_class3', {}, "dentex_dataset/coco/disease/annotations/instances_val2017.json", "dentex_dataset/coco/disease/val2017")
     launch(
         main,
         args.num_gpus,
