@@ -13,6 +13,14 @@ import random
 import torch
 from fvcore.nn.precise_bn import get_bn_modules
 
+from detectron2.data.datasets import register_coco_instances
+register_coco_instances('custom_train_class1', {}, "/kaggle/working/HierarchicalDet/dentex_dataset/coco/quadrant/annotations/instances_train2017.json", "/kaggle/working/HierarchicalDet/dentex_dataset/coco/quadrant/train2017")
+register_coco_instances('custom_train_class2', {}, "/kaggle/working/HierarchicalDet/dentex_dataset/coco/enumeration/annotations/instances_train2017.json", "/kaggle/working/HierarchicalDet/dentex_dataset/coco/enumeration/train2017")
+register_coco_instances('custom_train_class3', {}, "/kaggle/working/HierarchicalDet/dentex_dataset/coco/disease/annotations/instances_train2017.json", "/kaggle/working/HierarchicalDet/dentex_dataset/coco/disease/train2017")
+register_coco_instances('custom_validation_class1', {}, "/kaggle/working/HierarchicalDet/dentex_dataset/coco/quadrant/annotations/instances_val2017.json", "/kaggle/working/HierarchicalDet/dentex_dataset/coco/quadrant/val2017")
+register_coco_instances('custom_validation_class2', {}, "/kaggle/working/HierarchicalDet/dentex_dataset/coco/enumeration/annotations/instances_val2017.json", "/kaggle/working/HierarchicalDet/dentex_dataset/coco/enumeration/val2017")
+register_coco_instances('custom_validation_class3', {}, "/kaggle/working/HierarchicalDet/dentex_dataset/coco/disease/annotations/instances_val2017.json", "/kaggle/working/HierarchicalDet/dentex_dataset/coco/disease/val2017")
+
 import detectron2.utils.comm as comm
 from detectron2.utils.logger import setup_logger
 from detectron2.checkpoint import DetectionCheckpointer
@@ -450,13 +458,6 @@ def main(args):
 if __name__ == "__main__":
     args = default_argument_parser().parse_args()
     print("Command Line Args:", args)
-    from detectron2.data.datasets import register_coco_instances
-    register_coco_instances('custom_train_class1', {}, "dentex_dataset/coco/quadrant/annotations/instances_train2017.json", "dentex_dataset/coco/quadrant/train2017")
-    register_coco_instances('custom_train_class2', {}, "dentex_dataset/coco/enumeration/annotations/instances_train2017.json", "dentex_dataset/coco/enumeration/train2017")
-    register_coco_instances('custom_train_class3', {}, "dentex_dataset/coco/disease/annotations/instances_train2017.json", "dentex_dataset/coco/disease/train2017")
-    register_coco_instances('custom_validation_class1', {}, "dentex_dataset/coco/quadrant/annotations/instances_val2017.json", "dentex_dataset/coco/quadrant/val2017")
-    register_coco_instances('custom_validation_class2', {}, "dentex_dataset/coco/enumeration/annotations/instances_val2017.json", "dentex_dataset/coco/enumeration/val2017")
-    register_coco_instances('custom_validation_class3', {}, "dentex_dataset/coco/disease/annotations/instances_val2017.json", "dentex_dataset/coco/disease/val2017")
     launch(
         main,
         args.num_gpus,
