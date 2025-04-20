@@ -409,17 +409,22 @@ def setup(args):
 
 def main(args):
     cfg = setup(args)
-    
+
+     # ─── allow editing frozen CfgNode ─────────────────────────
+    cfg.defrost()
     cfg.DATASETS.TRAIN = (
-    "custom_train_class1",
-    "custom_train_class2",
-    "custom_train_class3",
+        "custom_train_class1",
+        "custom_train_class2",
+        "custom_train_class3",
     )
     cfg.DATASETS.TEST = (
         "custom_validation_class1",
         "custom_validation_class2",
         "custom_validation_class3",
     )
+    cfg.freeze()
+    # ────────────────────────────────────────────────────────────
+
     
     if args.eval_only:
         model = Trainer.build_model(cfg)
