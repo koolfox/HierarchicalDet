@@ -14,8 +14,8 @@ MODEL:
         NUM_CLASSES: [4, 8, 4] #
         USE_FED_LOSS: True #
 DATASETS:
-    TRAIN: ("custom_train_class1","custom_train_class2","custom_train_class3")
-    TEST: ("custom_validation_class1","custom_validation_class2","custom_validation_class3")
+    TRAIN: ("custom_train_class1")
+    TEST: ("custom_validation_class1")
 DATALOADER:
     SAMPLER_TRAIN: 'RepeatFactorTrainingSampler'
     REPEAT_THRESHOLD: 0.001
