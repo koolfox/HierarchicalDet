@@ -410,6 +410,16 @@ def setup(args):
 def main(args):
     cfg = setup(args)
     
+    cfg.DATASETS.TRAIN = (
+    "custom_train_class1",
+    "custom_train_class2",
+    "custom_train_class3",
+    )
+    cfg.DATASETS.TEST = (
+        "custom_validation_class1",
+        "custom_validation_class2",
+        "custom_validation_class3",
+    )
     
     if args.eval_only:
         model = Trainer.build_model(cfg)
